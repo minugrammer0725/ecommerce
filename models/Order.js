@@ -15,13 +15,13 @@ const orderSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'CartItem',
-      required: true
+      // required: true
     }
   ],
   billing: {
     type: Schema.Types.ObjectId,
     ref: "Billing",
-    required: true
+    // required: true
   },
   totalPrice: {
     type: Number  
