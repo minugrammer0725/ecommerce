@@ -4,9 +4,6 @@ const config = require('./config');
 const authJWT = async (request, response, next) => {
   // incoming request will send a json token in a cookie.
   const userToken = request.cookies.JWT;
-  
-      // Set JWT cookie from frontend logic.
-      // document.cookie = `JWT=${jwt}`;
 
   try {
     // jwt.verify() returns decoded userToken payload
