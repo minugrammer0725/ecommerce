@@ -16,9 +16,6 @@ const cartSchema = new Schema({
   billing: {
     type: Schema.Types.ObjectId,
     ref: 'Billing'
-  },
-  totalPrice: {
-    type: Number
   }
 });
 

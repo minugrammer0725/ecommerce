@@ -12,6 +12,9 @@ const usersRouter = require('./controllers/users');
 const productsRouter = require('./controllers/products');
 const reviewsRouter = require('./controllers/reviews');
 const ordersRouter = require('./controllers/orders');
+const cartItemsRouter = require('./controllers/cartItems');
+const cartsRouter = require('./controllers/carts');
+const billingsRouter = require('./controllers/billings');
 
 
 // initialize app
@@ -36,7 +39,9 @@ app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/orders', ordersRouter);
-
+app.use('/api/cartItems', cartItemsRouter);
+app.use('/api/carts', cartsRouter);
+app.use('/api/billings', billingsRouter);
 
 // static files
 // app.use(express.static(...));
