@@ -1,4 +1,3 @@
-
 const unknownEndpoints = (request, response, next) => {
   response.status(404).send({error: "404 Unknown Endpoint"});
 }
