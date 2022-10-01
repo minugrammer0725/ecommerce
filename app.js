@@ -1,3 +1,6 @@
+// node built-in
+const path = require('path');
+
 // imports
 const express = require('express');
 const mongoose = require('mongoose');
@@ -15,7 +18,8 @@ const ordersRouter = require('./controllers/orders');
 const cartItemsRouter = require('./controllers/cartItems');
 const cartsRouter = require('./controllers/carts');
 const billingsRouter = require('./controllers/billings');
-
+const loginRouter = require('./controllers/login');
+const adminsRouter = require('./controllers/admins');
 
 // initialize app
 const app = express();
@@ -32,6 +36,7 @@ mongoose.connect(config.MONGO_URI)
 
 // middlewares
 app.use(express.json());
+// app.use(express.urlencoded());
 // app.use(cookies());
 
 // route handlers
@@ -42,9 +47,13 @@ app.use('/api/orders', ordersRouter);
 app.use('/api/cartItems', cartItemsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/billings', billingsRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/admins', adminsRouter);
 
 // static files
-// app.use(express.static(...));
+app.use(express.static(path.join(__dirname, '/public/views')));
+app.use(express.static(path.join(__dirname, '/public/styles')));
+app.use(express.static(path.join(__dirname, '/public/scripts')));
 
 // unknown endpoints | error handler
 app.use(middleware.unknownEndpoints);

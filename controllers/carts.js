@@ -41,13 +41,10 @@ cartsRouter.put('/:cartId', async (request, response) => {
 
   const {cartId} = request.params;
   if (!cartId) response.status(400).send({error: "missing cart id"});
-  console.log('cart id:', cartId);
 
   try {
     const newCart = request.body;
-    console.log('new cart:', newCart);
     const updatedCart = await Cart.findByIdAndUpdate(cartId, newCart, {new: true});
-    console.log('updated!', updatedCart);
     response.status(200).json(updatedCart); 
 
   } catch (error) {

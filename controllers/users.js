@@ -39,6 +39,7 @@ usersRouter.post('/', async (request, response) => {
   if (!username || !email || !password) {
     response.status(400).send({error: "missing user credential"});
   }
+  console.log(`Backend: ${username} ${email} ${password}`);
   
   try {
     const hashed = await bcrypt.hash(password, Number(config.SALT));
