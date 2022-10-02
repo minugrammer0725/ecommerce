@@ -44,3 +44,28 @@ function getCookies() {
   return cookies;
 }
 // ref: https://stackoverflow.com/questions/252665/i-need-to-get-all-the-cookies-from-the-brow
+
+
+
+// display all products
+const productsList = document.querySelector('.products');
+const URL = 'http://localhost:3000/api/products';
+
+try {
+  const response = await fetch(URL);
+  const products = await response.json();
+  for (let product of products) {
+    const p = document.createElement('p');
+    p.innerText = `product: ${product.name} from ${product.brand}`;
+    productsList.appendChild(p);
+  }
+
+  // TODO:
+  // create a thumbnail component using product image, name, brand, price.
+  // attach event listener on click => redirect (window.location.href) to 
+  // clicked product page.
+
+} catch (error) {
+  console.log(error);
+}
+
