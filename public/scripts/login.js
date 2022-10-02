@@ -32,12 +32,13 @@ async function onSubmit(event) {
 
     const {token, user} = await response.json();
 
-    // store jwt in browser cookie.
+    // store jwt, userId in browser cookie.
     document.cookie = `JWT=${token}`;
     document.cookie = `USERID=${user.id}`;
 
     // redirect to index(home page)
-    window.location.href = 'http://localhost:3000/index.html';
+    window.location.href = '../index.html';
+    // 'http://localhost:3000/index.html';
 
   } catch (error) {
     console.log(error);

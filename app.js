@@ -4,7 +4,7 @@ const path = require('path');
 // imports
 const express = require('express');
 const mongoose = require('mongoose');
-// const cookies = require('cookie-parser');
+const cookies = require('cookie-parser');
 
 // utils
 const config = require('./utils/config');
@@ -36,8 +36,7 @@ mongoose.connect(config.MONGO_URI)
 
 // middlewares
 app.use(express.json());
-// app.use(express.urlencoded());
-// app.use(cookies());
+app.use(cookies());
 
 // route handlers
 app.use('/api/users', usersRouter);
