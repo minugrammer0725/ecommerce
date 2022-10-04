@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+  <header>
+    <%- include('header') %>
+  </header>
+  <main>
+    <div class="filters">
+      <label for="filter">Filter by:</label>
+      <select name="filter" id="filter">
+        <option disabled selected>select a brand</option>
+        <option value="all">All</option>
+        <option value="YZYGAP">YeezyGAP</option>
+        <option value="DiorSacai">Dior Sacai</option>
+        <option value="NikeJacquemus">Nike Jacquemus</option>
+      </select>
+      <label for="sort">Sort by:</label>
+      <select name="sort" id="sort">
+        <option disabled selected>sort products by</option>
+        <option value="popular">Most Popular</option>
+        <option value="descending">Price High to Low</option>
+        <option value="ascending">Price Low to High</option>
+      </select>
+    </div>
+    <section class="products">
+      <!-- <div class="product-card">
+        <div class="product-image">
+          <img src="../longroundjacket_yg.jpg" alt="sample img">
+        </div>
+        <div class="product-info">
+          <h5>Jacket</h5>
+          <h6>$199.99</h6>
+        </div>
+      </div> -->
+
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <%- include('partials/footer', {user: "testuser"}) %>
+  </footer>
+  <script type="module" src="../index.js"></script>
+</body>
+</html>

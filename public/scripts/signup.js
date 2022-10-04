@@ -1,17 +1,26 @@
-console.log('hello from signup.js');
+const baseURL = 'http://localhost:3000';
 
-const URL = 'http://localhost:3000/api/users';
+// home, login buttons (header) 
+const homeBtn = document.querySelector('.home-btn');
+homeBtn.addEventListener('click', () => {
+  window.location.href = baseURL;
+})
 
+const loginBtn = document.querySelector('.login-btn');
+loginBtn.addEventListener('click', () => {
+  window.location.href = `${baseURL}/api/login`;
+})
+
+// sign up form 
 const form = document.querySelector('.signup-form');
 form.addEventListener('submit', onSubmit);
-
 
 async function onSubmit(event) {
   event.preventDefault();
   const username = document.querySelector('#username');
   const email = document.querySelector('#email');
   const password = document.querySelector('#password');
-  console.log(`New User: ${username.value} ${email.value} ${password.value}`);
+  console.log(`User credentials provided: ${username.value} ${email.value} ${password.value}`);
 
   const payload = {
     username: username.value,
@@ -21,7 +30,7 @@ async function onSubmit(event) {
 
   // create a new user
   try {
-    const response = await fetch(URL, {
+    const response = await fetch(`${baseURL}/api/users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -32,11 +41,8 @@ async function onSubmit(event) {
 
     if (!response.ok) throw new Error('Could not create new user');
 
-    const newUser = await response.json();
-    console.log(`new user created, hello ${newUser.username}`);
-
     // redirect to login.
-    window.location.href = 'http://localhost:3000/login.html';
+    window.location.href = baseURL;
   } catch (error) {
     console.log(error);
   }

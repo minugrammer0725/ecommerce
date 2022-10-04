@@ -1,0 +1,48 @@
+.login-form {
+  margin: 3rem auto;
+  padding: 3rem;
+  max-width: 24rem;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-name {
+  margin-left: 2rem;
+}
+
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: end;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.navbar-login {
+  flex-grow: 1;
+  margin-right: 4rem;
+}
+
+button:not(.submit) {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button[type='submit'] {
+  margin-top: 1rem;
+}
+

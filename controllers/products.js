@@ -25,7 +25,8 @@ productsRouter.get('/:productId', async (request, response) => {
   // basic validation 
   try {
     const product = await Product.findById(productId);
-    response.status(200).json(product);
+    response.render('product', {data: product});
+
   } catch (error) {
     console.log(error);
   }

@@ -21,7 +21,9 @@ ordersRouter.get('/user/:userId', async (request, response) => {
 
   try {
     const ordersFromUser = await Order.find({user: userId});
-    response.status(200).json(ordersFromUser);
+    response.render('order', {
+      data: ordersFromUser
+    });
   } catch (error) {
     console.log(error);
   }

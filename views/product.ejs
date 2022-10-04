@@ -7,6 +7,16 @@
   <title>Document</title>
 </head>
 <body>
-  Product Details Page
+  <header>
+    <%- include('header') %>
+  </header>
+  <h2>Product details page</h2>
+
+  <div>
+    <p>Name: <%=data.name%></p>
+    <h4>Brand: <%=data.brand%></h4>
+    <h5>Price: $<%=data.price%></h5>
+  </div>
+
 </body>
 </html>

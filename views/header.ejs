@@ -1,0 +1,104 @@
+<link href="../header.css" rel="stylesheet" type="text/css">
+<div class="container">
+  <h1 class="app-name">Collab</h1>
+  <!-- 
+    Not Logged In:
+    [Home, Signup, Login ]
+
+    Logged In:
+    [Home, Cart, Orders, Logout]
+  -->
+
+  <nav class="navbar">
+    <ul>
+      <li><button class="home-btn">Home</button></li>
+      <li><button id="signup-btn">Sign Up</button></li>
+      <li><button id="login-btn">Login</button></li>
+    </ul>
+  </nav>
+
+  <nav class="navbar-verified">
+    <ul>
+      <li><p class="greet-user"></p></li>
+      <li><button class="home-btn">Home</button></li>
+      <li><button id="cart-btn">Cart</button></li>
+      <li><button id="orders-btn">My Orders</button></li>
+      <li><button id="logout">Logout</button></li>
+    </ul>
+  </nav>
+</div>
+
+
+<hr>
+
+<!-- <script src="../header.js"></script> -->
+<script type="text/javascript">
+  // For each nav element, attach 'click' event handler to send request to server
+  const URL = 'http://localhost:3000';
+
+  const homeBtns = document.getElementsByClassName('home-btn');
+  for (let homeBtn of homeBtns) {
+    homeBtn.addEventListener('click', () => {
+      window.location.href = URL;
+    })
+  }
+
+  const signupBtn = document.getElementById('signup-btn');
+  signupBtn.addEventListener('click', () => {
+    window.location.href = `${URL}/api/signup`;
+  })
+
+  const loginBtn = document.getElementById('login-btn');
+  loginBtn.addEventListener('click', () => {
+    window.location.href = `${URL}/api/login`;
+  })
+
+  const cartBtn = document.getElementById('cart-btn');
+  cartBtn.addEventListener('click', () => {
+    window.location.href = `${URL}/api/carts`;
+  })
+
+  const ordersBtn = document.getElementById('orders-btn');
+  ordersBtn.addEventListener('click', () => {
+    // get userid from localStorage user
+    const {id} = JSON.parse(localStorage.getItem('user'));
+    window.location.href = `${URL}/api/orders/user/${id}`;
+  })
+
+
+  // toggle classname depending on user state
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    // verified user
+    document.getElementsByClassName('navbar')[0].style.display = "none";
+    document.getElementsByClassName('navbar-verified')[0].style.display = "inline";
+    
+    const greetUser = document.querySelector('.greet-user');
+    const {username} = JSON.parse(window.localStorage.getItem('user'));
+    greetUser.innerText = `Hello ${username}`;
+
+    console.log('User verified!');
+  } else {
+    // not logged in
+    document.getElementsByClassName('navbar')[0].style.display = "inline";
+    document.getElementsByClassName('navbar-verified')[0].style.display = "none";
+
+    console.log('User is not logged in yet');
+  }
+
+
+  // Logout button
+  const logoutBtn = document.querySelector('#logout');
+
+  logoutBtn.addEventListener('click', logout);
+
+  function logout() {
+    console.log('Logging out user');
+    // empty localStorage
+    window.localStorage.clear();
+    // redirect to main page
+    window.location.href = 'http://localhost:3000';
+  }
+
+
+</script>

@@ -6,6 +6,11 @@ const config = require('../utils/config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+loginRouter.get('/', (request, response) => {
+  // render login.ejs
+  response.render('login');
+})
+
 loginRouter.post('/', async (request, response) => {
   // verify and login user.
   // If valid credential, attach a jwt to response headers.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="app-name">Collab</h1>
+      <nav class="navbar-login">
+        <ul>
+          <li><button class="home-btn">Home</button></li>
+          <li><button class="signup-btn">Sign Up</button></li>
+        </ul>
+      </nav>
+    </div>
+    <hr>
+  </header>
+
+  <form class="login-form">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="enter username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="enter password" required>
+    
+    <button type="submit" class="submit">Login</button>
+  </form>
+
+  <footer>
+    <%- include('partials/footer', {user: "testuser"}) %>
+  </footer>
+
+  <script src="../login.js"></script>
+</body>
+</html>

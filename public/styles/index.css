@@ -1,0 +1,24 @@
+.filters {
+  display: flex;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-image>img {
+  /* set default thumbnail size here */
+  max-width: 100%;
+}
+
+.product-card {
+  padding: 2%;
+  flex: 0 21%;
+  display: flex;  
+      /* For child elements */
+}
+
+.product-info {
+  margin-left: 1rem;
+}

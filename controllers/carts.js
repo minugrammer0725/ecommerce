@@ -16,6 +16,11 @@ cartsRouter.get('/:userId', async (request, response) => {
 
 })
 
+cartsRouter.get('/', (request, response) => {
+  response.render('cart');
+})
+
+
 cartsRouter.post('/', async (request, response) => {
   // creates a new cart for user (triggered after POST /api/users)
   

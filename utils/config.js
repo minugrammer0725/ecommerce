@@ -9,5 +9,5 @@ module.exports = {
   PORT,
   MONGO_URI,
   SALT,
-  JWT_KEY
+  JWT_KEY,
 }

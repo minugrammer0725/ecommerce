@@ -5,8 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="../signup.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
+  <header>
+    <div class="container">
+      <h1 class="app-name">Collab</h1>
+      <nav class="navbar-signup">
+        <ul>
+          <li><button class="home-btn">Home</button></li>
+          <li><button class="login-btn">Login</button></li>
+        </ul>
+      </nav>
+    </div>
+    <hr>
+  </header>
   <form class="signup-form">
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
@@ -17,8 +31,12 @@
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
     
-    <button type="submit">Sign Up</button>
+    <button type="submit" class="submit">Sign Up</button>
   </form>
+  <footer>
+    <%- include('partials/footer', {user: "testuser"}) %>
+  </footer>
+
   <script type="module" src="../signup.js"></script>
 </body>
 </html>

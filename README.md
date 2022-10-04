@@ -50,14 +50,6 @@ Models:
 
 
 Pages:  
-  Signup page:
-    New user created using unique username, unique email, and password.
-  
-  Login page:
-    User must provide username and password to log in.
-    Upon successful login, redirect to home page.
-    If user has active session, log in user automatically.
-
   Main page:
     Header (app name, Logo, Navbar)
       Navbar (Home, Cart, Orders, Signup, Login, Logout)
@@ -67,7 +59,16 @@ Pages:
     Footer (copyright, contact info)
 
     'Login', 'Signup', 'Logout' according to user status.
+
+  Signup page:
+    New user created using unique username, unique email, and password.
   
+  Login page:
+    User must provide username and password to log in.
+    Upon successful login, redirect to home page.
+    If user has active session, log in user automatically.
+
+
   Product page:
     Detailed info of products(pics, price, etc).
     'Add to Cart' button with quantity specified. 
@@ -90,11 +91,13 @@ Pages:
     Admins can also view user accounts and order history.
 
 
- 
-  ...
-  Header/Footer page:
-    Create separate header/footer.html and use JQuery to include 
-    them throughout multiple pages in our app. (Better UX)
+-----------------------------------------------------------------------------
+
+User Authorization:
+  (JWT)
+  What are the cases that users needs to send jwt as request header?
+  1)
+  2)
 
 -----------------------------------------------------------------------------
 
@@ -105,8 +108,9 @@ Packages:
   dotenv => .env file
   bcrypt => encrypt user password
   jsonwebtoken => use JWT for auth token
+  cookie-parser => use browser cookies
+  ejs => template engine
 
-  cookie-parser => IF I want to use cookie to store JWT
   express-session => IF I want to use session state (install uuid)
 
 -----------------------------------------------------------------------------
@@ -121,19 +125,22 @@ API endpoints(/api):
 
   /products
     GET: return all products.
-    GET (?brand=): return products from specific brand.
+    GET (/brand?name=): return products from specific brand.
     GET (/:productId): return a specific product.
+        POST: create products(manually...)
 
   /reviews
     GET (/:productId): return all reviews for a specific product.
     POST: creates a new review.
-
 
   /orders
         // GET: return all orders. 
     GET (/:orderId): return a specific order.
     GET (/user/:userId): return orders for a specific user.
     POST: creates a new order.
+
+
+
 
   /carts
     GET (/:userId): return a cart for user.
@@ -150,15 +157,29 @@ API endpoints(/api):
     GET (/:billingId): return a specific billing info.
     POST: create a new billing info.
 
-  /admin
+
+
+
+  /admins
     GET (/requests): return all unresolved requests(orders).
     GET (/users): return all user data.
     PUT (/requests/:requestId): update request status. 
         remember that requestId === orderId
 
-
   /login
     POST: verifies user credentials and logs in user.
           upon success, attach a jwt to response header. 
+
+
+-----------------------------------------------------------------------------
+How to create dynamic product pages
+1) Each thumbnail image should have an 'click' event handler attached.
+  => The event handler sends a GET to api/products/:productId
+
+2) Backend server responds by rendernig .ejs file.
+  Instead of sending back the product data, send product data 
+  as options parameter in .render()
+
+
 
 
