@@ -1,5 +1,30 @@
+const jwt = require('jsonwebtoken');
+
+const config = require('../utils/config');
+
 const unknownEndpoints = (request, response, next) => {
   response.status(404).send({error: "404 Unknown Endpoint"});
+}
+
+const tokenExtractor = (request, response, next) => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    request.token = authorization.substring(7)
+  }
+  next()
+}
+
+const authJwt = (request, response, next) => {
+  const token = request.token;
+  console.log('User Auth: token ', token);
+
+  try {
+    jwt.verify(token, config.JWT_KEY);
+    next();
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 }
 
 const errorHandler = (error, request, response, next) => {
@@ -19,4 +44,6 @@ const errorHandler = (error, request, response, next) => {
 module.exports = {
   unknownEndpoints,
   errorHandler,
+  authJwt,
+  tokenExtractor
 }

@@ -1,6 +1,7 @@
 const usersRouter = require('express').Router();
 
 const User = require('../models/User');
+const Cart = require('../models/Cart');
 const config = require('../utils/config');
 
 const bcrypt = require('bcrypt');
@@ -48,10 +49,18 @@ usersRouter.post('/', async (request, response) => {
       email,
       password: hashed,
       isAdmin: false
-    })
+    });
 
     const createdUser = await newUser.save();
     console.log('new user created!\n', createdUser);
+    // TODO: Create a new cart.
+    // Two-way bind cart and user.
+    const newCart = new Cart({
+      user: createdUser._id
+    });
+    const createdCart = await newCart.save();
+    createdUser.cart = createdCart._id
+    await createdUser.save();
     response.status(201).json(createdUser);
   } catch (error) {
     console.log(error);

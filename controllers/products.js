@@ -8,7 +8,6 @@ productsRouter.get('/brand', async (request, response) => {
 
   // ?name={brandName}
   const brandName = request.query.name;
-  console.log('brand name:', brandName);
   // basic validation
   try {
     const brandProducts = await Product.find({brand: brandName});
@@ -25,8 +24,12 @@ productsRouter.get('/:productId', async (request, response) => {
   // basic validation 
   try {
     const product = await Product.findById(productId);
-    response.render('product', {data: product});
-
+    if (request.query?.data === 'return') {
+      response.status(200).json(product);
+    } else {
+      response.render('product', {data: product});
+    }
+    
   } catch (error) {
     console.log(error);
   }

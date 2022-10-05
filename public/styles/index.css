@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.filters > select {
+  margin-right: 1rem;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;

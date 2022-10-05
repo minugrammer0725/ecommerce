@@ -5,18 +5,64 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="../../product.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <header>
     <%- include('header') %>
   </header>
-  <h2>Product details page</h2>
+  <h2>Product details</h2>
 
-  <div>
-    <p>Name: <%=data.name%></p>
-    <h4>Brand: <%=data.brand%></h4>
-    <h5>Price: $<%=data.price%></h5>
+  <div class="product-card">
+    <img src="../../<%= data.pictures[0]%>" alt="<%= data.name%>" id="product-image">
+    <div class="product-info">
+      <h2><%=data.name%></h2>
+      <pre>This product is in high demand, 
+and only available in Collab.
+Don't miss your chance! 
+      </pre>
+      <h4>Read to be shipped</h4>
+      <h4>Collaborated by: <%=data.brand%></h4>
+      <h5>Price: $<%=data.price%></h5>
+      <div class="addToCart">
+        <button id="addBtn">Add to Cart</button>
+        <button class="minusBtn"><span>&#8722;</span></button>
+        <h4 class="qty">1</h4>
+        <button class="plusBtn">+</button>
+      </div>
+      
+    </div>
+
   </div>
 
+  <div class="review-container">
+    <h2>Reviews</h2>
+    <form class="review-form">
+      <div>
+        <label for="rating">Select a rating:</label>
+        <select name="rating" id="rating">
+          <option value="1">1 - highly dissatisfied</option>
+          <option value="2">2 - dissatisfied</option>
+          <option value="3">3 - neutral</option>
+          <option value="4">4 - satisfied</option>
+          <option value="5" selected>5 - highly satisfied</option>
+        </select>
+      </div>
+      <div>
+        <label for="review">Write a review:</label>
+        <textarea name="review" id="review" cols="60" rows="6"></textarea>
+      </div>
+      <button type="submit" id="reviewBtn">submit review</button>
+    </form>
+  </div>
+
+  <div class="reviews">
+  </div>
+
+  <footer>
+    <%- include('partials/footer', {user: "testuser"}) %>
+  </footer>
+
+  <script src="../../product.js"></script>
 </body>
 </html>

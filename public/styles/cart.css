@@ -1,0 +1,20 @@
+#checkout {
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+
+.item-card {
+  max-width: 24rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.cart-items > div {
+  margin: 1rem 0;
+}
+
+.user-cart > * {
+  margin: 1rem 0;
+}

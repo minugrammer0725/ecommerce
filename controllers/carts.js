@@ -2,13 +2,13 @@ const cartsRouter = require('express').Router();
 
 const Cart = require('../models/Cart');
 
-cartsRouter.get('/:userId', async (request, response) => {
+cartsRouter.get('/:cartId', async (request, response) => {
   // return a cart for specified user
-  const {userId} = request.params;
-  if (!userId) response.status(400).send({error: "missing user id"});
+  const {cartId} = request.params;
+  if (!cartId) response.status(400).send({error: "missing cart id"});
 
   try {
-    const cart = await Cart.find({user: userId});
+    const cart = await Cart.findById(cartId);
     response.status(200).json(cart);
   } catch (error) {
     console.log(error);

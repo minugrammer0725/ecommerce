@@ -5,11 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="../cart.css" rel="stylesheet" type="text/css">
 </head>
 <%- include('header') %>
 <body>
 
   Cart Page (EJS)
-  <script src="../cart.js"></script>
+  <div class="user-cart">
+    <div class="empty-msg">
+      <h2>You don't have anything in your cart yet<h2>
+      <button class="goToHome">Browse Home Page</button>
+    </div>
+    
+    <div class="cart-items">
+      
+      <!-- <div class="item-card">
+        <h3 class="item-name"></h3>
+        <h3 class="item-brand"></h3>
+        <h3 class="item-qty"></h3>
+      </div> -->
+
+
+    </div>
+    <button id="checkout">Check Out</button>
+  </div>
+
+
+  <footer>
+    <%- include('partials/footer', {user: "testuser"}) %>
+  </footer>
+
+  <script type="module" src="../cart.js"></script>
 </body>
 </html>

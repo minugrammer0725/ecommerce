@@ -1,0 +1,38 @@
+.product-card {
+  margin: 0 auto;
+  max-width: 80%;
+  padding: 2rem;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.product-info {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+img {
+  max-width: 20rem;
+}
+
+#addBtn, #reviewBtn {
+  padding: 0.6rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  width: fit-content;
+}
+
+
+
+.addToCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.minusBtn, .plusBtn {
+  font-size: 1.5rem;
+}
+

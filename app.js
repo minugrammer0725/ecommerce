@@ -42,6 +42,8 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(cors());
 
+app.use(middleware.tokenExtractor);
+
 app.get('/', (request, response) => {
   response.render('index');
 })
