@@ -25,7 +25,6 @@ img {
 }
 
 
-
 .addToCart {
   display: flex;
   justify-content: space-between;
@@ -36,3 +35,15 @@ img {
   font-size: 1.5rem;
 }
 
+
+.review-container {
+  border: 1px solid black;
+  max-width: 80%;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.review-item {
+  /* max-width:  */
+  font-style: italic;
+}

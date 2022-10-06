@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../utils/config');
 
 const unknownEndpoints = (request, response, next) => {
-  response.status(404).send({error: "404 Unknown Endpoint"});
+  response.render('redirect');
 }
 
 const tokenExtractor = (request, response, next) => {

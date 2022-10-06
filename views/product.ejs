@@ -40,29 +40,36 @@ Don't miss your chance!
     <form class="review-form">
       <div>
         <label for="rating">Select a rating:</label>
-        <select name="rating" id="rating">
+        <select name="rating" id="rating" required>
+          <option disabled selected>--Select a rating--</option>
           <option value="1">1 - highly dissatisfied</option>
           <option value="2">2 - dissatisfied</option>
           <option value="3">3 - neutral</option>
           <option value="4">4 - satisfied</option>
-          <option value="5" selected>5 - highly satisfied</option>
+          <option value="5">5 - highly satisfied</option>
         </select>
       </div>
       <div>
         <label for="review">Write a review:</label>
-        <textarea name="review" id="review" cols="60" rows="6"></textarea>
+        <textarea name="review" id="reviewText" cols="60" rows="6" required></textarea>
       </div>
       <button type="submit" id="reviewBtn">submit review</button>
     </form>
   </div>
 
   <div class="reviews">
+    <!-- <div class="review-container">
+          <div class="review-item">
+            ...
+          </div>
+    </div> -->
+
   </div>
 
   <footer>
     <%- include('partials/footer', {user: "testuser"}) %>
   </footer>
 
-  <script src="../../product.js"></script>
+  <script type="module" src="../../product.js"></script>
 </body>
 </html>

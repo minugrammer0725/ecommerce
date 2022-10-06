@@ -1,7 +1,9 @@
 const reviewsRouter = require('express').Router();
 
+const Product = require('../models/Product');
 const Review = require('../models/Review');
 
+const {authJwt} = require('../utils/middleware');
 
 reviewsRouter.get('/:productId', async (request, response) => {
   // return all reviews for a specific product
@@ -17,7 +19,7 @@ reviewsRouter.get('/:productId', async (request, response) => {
   }
 })
 
-reviewsRouter.post('/', async (request, response) => {
+reviewsRouter.post('/', authJwt, async (request, response) => {
   // creates a new review
   
   const {rating, comment, user, product} = request.body;
@@ -32,6 +34,8 @@ reviewsRouter.post('/', async (request, response) => {
     })
 
     const createdReview = await newReview.save();
+    // TODO: also, add to blog's reviews array.
+    
     response.status(201).json(createdReview);
 
   } catch (error) {
